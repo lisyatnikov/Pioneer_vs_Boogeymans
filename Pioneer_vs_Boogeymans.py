@@ -1,30 +1,55 @@
 def main():
-    boar_create()
+    boar = Boar()
     the_end_of_game = False
     while not the_end_of_game:
-        print('enemy is alive', hp, 'HP')
         damage = int(input())
-        boar_get_damage(damage)
+        boar.get_damage(damage)
+        boar.health_status()
 
-        if not boar_is_alive():
+        if not boar.is_alive():
             the_end_of_game = True
             print('All enemies are dead')
 
 
-def boar_create():
-    global hp
-    hp = 10
+class Boar():
+    def __init__(self, personal_id):
+        self.personal_id = personal_id
+        self.hp = 10
+
+    def is_alive(self):
+        return self.hp > 0
+
+    def get_damage(self, damage):
+        self.hp -= damage
+        if self.hp < 0:
+            self.hp = 0
+
+    def health_status(self):
+        print('enemy is alive', self.hp, 'HP')
+
+    def dying_cry(self):
+        print('#$%&*^@!!?')
 
 
-def boar_is_alive():
-    return hp > 0
 
+class Hornet():
+    def __init__(self, personal_id):
+        self.hp = 1
 
-def boar_get_damage(damage):
-    global hp
-    hp -= damage
-    if hp < 0:
-        hp = 0
+    def is_alive(self):
+        return self.hp > 0
+
+    def get_damage(self, damage):
+        self.hp -= damage
+        if self.hp < 0:
+            self.hp = 0
+
+    def health_status(self):
+        print('enemy is alive', self.hp, 'HP')
+
+    def dying_cry(self):
+        print('BzzzzzWooo!!?')
+
 
 
 main()

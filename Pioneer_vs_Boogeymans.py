@@ -9,6 +9,7 @@ def main():
         enemy.get_damage(damage)
 
         if not enemy.is_alive():
+            enemy.dying_cry()
             enemy_list.pop(0) # Eresing the dead Enemy in the enemy list.
             # But much better do POP to the end of list
             # You have to change fight logic with multiple enemies

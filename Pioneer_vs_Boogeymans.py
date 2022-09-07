@@ -3,16 +3,15 @@ def main():
 
     the_end_of_game = False
     while not the_end_of_game:
-        enemy = enemy_list[0]
+        enemy = enemy_list[-1] # Activate enemy in the end of list
         enemy.health_status()
         damage = int(input())
         enemy.get_damage(damage)
 
         if not enemy.is_alive():
             enemy.dying_cry()
-            enemy_list.pop(0) # Eresing the dead Enemy in the enemy list.
-            # But much better do POP to the end of list
-            # You have to change fight logic with multiple enemies
+            enemy_list.pop() # Eresing the dead Enemy in the enemy list.
+
 
 
 
@@ -33,12 +32,17 @@ class Boar:
         self.hp -= damage
         if self.hp < 0:
             self.hp = 0
+        print(self.enemy_id, ': ARRR!!!') # May you include damage cry?
+
 
     def health_status(self):
         print('enemy Boar', self.enemy_id, 'is alive', self.hp, 'HP')
 
+
     def dying_cry(self):
-        print('#$%&*^@!!?')
+        print(self.enemy_id, ': #$%&*^@!!?')
+
+
 
 
 
@@ -54,12 +58,15 @@ class Hornet:
         self.hp -= damage
         if self.hp < 0:
             self.hp = 0
+        print(self.enemy_id, ': WZZZ!!!') # May you include damage cry?
 
     def health_status(self):
         print('enemy hornet', self.enemy_id, ' is alive', self.hp, 'HP')
 
     def dying_cry(self):
-        print('BzzzzzWooo!!?')
+        print(self.enemy_id, ': BzzzzzWooo!!?')
+
+
 
 
 
